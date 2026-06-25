@@ -7,15 +7,15 @@ export function Projects() {
     <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
       <SectionHeading index="//" eyebrow="selected work" title="Things I'm proud of" />
       <div className="mt-20 flex flex-col gap-28">
-        {projects.map((p, i) => (
-          <ProjectBlock key={p.id} project={p} flip={i % 2 === 1} />
+        {projects.map((p) => (
+          <ProjectBlock key={p.id} project={p} />
         ))}
       </div>
     </section>
   );
 }
 
-function ProjectBlock({ project: p, flip }: { project: Project; flip: boolean }) {
+function ProjectBlock({ project: p }: { project: Project }) {
   return (
     <article className="relative">
       {/* index watermark */}
@@ -49,12 +49,8 @@ function ProjectBlock({ project: p, flip }: { project: Project; flip: boolean })
         </div>
       </Reveal>
 
-      <div
-        className={`mt-10 grid gap-10 lg:grid-cols-2 ${
-          flip ? "lg:[&>*:first-child]:order-2" : ""
-        }`}
-      >
-        {/* text column */}
+      <div className="mt-10 grid gap-10 lg:grid-cols-2">
+        {/* summary + highlights */}
         <Reveal delay={0.05}>
           <p className="text-base leading-relaxed text-text/80">{p.summary}</p>
 
@@ -66,8 +62,11 @@ function ProjectBlock({ project: p, flip }: { project: Project; flip: boolean })
               </li>
             ))}
           </ul>
+        </Reveal>
 
-          <div className="mt-7 rounded-lg border border-border bg-surface/40 p-4">
+        {/* role + stack */}
+        <Reveal delay={0.12}>
+          <div className="rounded-lg border border-border bg-surface/40 p-5">
             <p className="eyebrow mb-2 text-[0.65rem]">my role</p>
             <p className="text-sm leading-relaxed text-text/75">{p.role}</p>
           </div>
@@ -83,66 +82,27 @@ function ProjectBlock({ project: p, flip }: { project: Project; flip: boolean })
             ))}
           </ul>
         </Reveal>
-
-        {/* diagram column */}
-        <Reveal delay={0.12}>
-          <DiagramCard flow={p.diagram} />
-        </Reveal>
       </div>
+
+      {/* architecture diagram — full width */}
+      <Reveal delay={0.05}>
+        <figure className="card mt-10 overflow-hidden p-3 sm:p-4">
+          <div className="mb-3 flex items-center justify-between px-1">
+            <p className="eyebrow text-[0.65rem]">architecture diagram</p>
+            <span className="flex gap-1.5">
+              <Dot /> <Dot /> <Dot />
+            </span>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={p.image}
+            alt={`${p.name} architecture — ${p.diagram}`}
+            loading="lazy"
+            className="w-full rounded-lg border border-border"
+          />
+        </figure>
+      </Reveal>
     </article>
-  );
-}
-
-/* Clean placeholder for the architecture diagram. The real dark/green
-   Excalidraw diagram will be embedded here. */
-function DiagramCard({ flow }: { flow: string }) {
-  return (
-    <div className="card relative flex h-full min-h-[260px] flex-col overflow-hidden p-6">
-      <div className="mb-5 flex items-center justify-between">
-        <p className="eyebrow text-[0.65rem]">architecture diagram</p>
-        <span className="flex gap-1.5">
-          <Dot /> <Dot /> <Dot />
-        </span>
-      </div>
-
-      {/* faint grid backdrop */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(63,207,142,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(63,207,142,0.06) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* accessible description for screen readers / context, hidden visually */}
-      <span className="sr-only">{flow}</span>
-
-      <div className="relative flex flex-1 flex-col items-center justify-center gap-4 text-center">
-        <WireframeGlyph />
-        <p className="font-mono text-[0.7rem] text-faint">Architecture diagram coming soon</p>
-      </div>
-    </div>
-  );
-}
-
-function WireframeGlyph() {
-  return (
-    <svg
-      viewBox="0 0 120 64"
-      className="h-16 w-32 text-accent-deep"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      aria-hidden
-    >
-      <rect x="4" y="24" width="26" height="16" rx="3" />
-      <rect x="47" y="8" width="26" height="16" rx="3" />
-      <rect x="47" y="40" width="26" height="16" rx="3" />
-      <rect x="90" y="24" width="26" height="16" rx="3" />
-      <path d="M30 32 H40 M60 24 V40 M73 16 H83 V30 M73 48 H83 V34" opacity="0.7" />
-      <circle cx="60" cy="32" r="1.5" fill="currentColor" stroke="none" />
-    </svg>
   );
 }
 

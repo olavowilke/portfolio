@@ -64,7 +64,8 @@ export type Project = {
   highlights: string[];
   role: string;
   stack: string[];
-  diagram: string; // alt / description for the eventual Excalidraw diagram
+  diagram: string; // alt / description of the architecture diagram
+  image: string; // path to the rendered Excalidraw diagram
 };
 
 export const projects: Project[] = [
@@ -93,6 +94,7 @@ export const projects: Project[] = [
     stack: ["Spring", "Microservices", "PostgreSQL", "Amazon SQS", "NetSuite", "AWS"],
     diagram:
       "Client → MSE orchestrator → parallel vendor adapters + internal inventory → scoring → PostgreSQL + SQS → async fulfillment → NetSuite",
+    image: "/diagrams/mse.png",
   },
   {
     id: "tournament",
@@ -119,6 +121,7 @@ export const projects: Project[] = [
     stack: ["Java 7 / 17", "Spring Boot", "RabbitMQ", "MySQL", "JSP", "Docker", "Jenkins"],
     diagram:
       "Core bet/win API → RabbitMQ → gator-messaging → scoring + leaderboard (MySQL) → back-office endpoint (live standings) + tournament management",
+    image: "/diagrams/tournament.png",
   },
   {
     id: "game-winner-sender",
@@ -145,6 +148,7 @@ export const projects: Project[] = [
     stack: ["Go", "Adobe Journey Optimizer", "Kafka", "MySQL", "REST", "Slack"],
     diagram:
       "MDM → Kafka → klio (Go) → MySQL ← back-office REST. Polling: 1-min trigger + 5-min retry → Adobe Journey Optimizer → fans. Slack to ops.",
+    image: "/diagrams/game-winner-sender.png",
   },
 ];
 
