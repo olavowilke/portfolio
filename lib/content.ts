@@ -98,7 +98,7 @@ export const projects: Project[] = [
     id: "tournament",
     index: "02",
     name: "Tournament Feature",
-    context: "iGaming integrator — between virtual casinos & game providers",
+    context: "LATAM iGaming integrator for virtual casinos & game providers",
     headline:
       "Real-time casino tournaments for 100k+ players — built on a latency-sensitive bet pipeline without adding a millisecond to it.",
     summary:
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     id: "game-winner-sender",
     index: "03",
     name: "Game Winner Sender",
-    context: "Sports apparel & fan gear marketplace",
+    context: "U.S. Sports apparel & fan gear marketplace",
     headline:
       "Turning live game results into marketing emails for up to 800k fans — at a 12% buy rate.",
     summary:
