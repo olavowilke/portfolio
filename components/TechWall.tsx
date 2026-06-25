@@ -13,7 +13,7 @@ export function TechWall() {
       <SectionHeading index="//" eyebrow="stack" title="Tools I build with" />
 
       <motion.ul
-        className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
+        className="mt-12 grid grid-cols-4 gap-2.5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}
@@ -37,7 +37,7 @@ function TechTile({ name, slug }: { name: string; slug: string }) {
         hidden: { opacity: 0, scale: 0.8 },
         show: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
       }}
-      className="group relative flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-border bg-surface/40 transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:border-accent-deep hover:bg-surface-2 hover:shadow-[0_12px_40px_-12px_rgba(63,207,142,0.35)]"
+      className="group relative flex aspect-square flex-col items-center justify-center gap-1.5 rounded-lg border border-border bg-surface/40 transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:border-accent-deep hover:bg-surface-2 hover:shadow-[0_10px_32px_-12px_rgba(63,207,142,0.35)]"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -45,9 +45,9 @@ function TechTile({ name, slug }: { name: string; slug: string }) {
         alt={name}
         loading="lazy"
         onError={() => setBroken(true)}
-        className="h-9 w-9 transition-transform duration-300 ease-out group-hover:scale-[1.45] sm:h-10 sm:w-10"
+        className="h-7 w-7 transition-transform duration-300 ease-out group-hover:scale-[1.45]"
       />
-      <span className="font-mono text-[0.62rem] text-faint transition-colors group-hover:text-muted">
+      <span className="font-mono text-[0.55rem] leading-none text-faint transition-colors group-hover:text-muted">
         {name}
       </span>
     </motion.li>

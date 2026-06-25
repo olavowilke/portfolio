@@ -47,16 +47,7 @@ export function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#about" className="group flex items-center gap-2.5" aria-label="Home">
-          <span className="grid h-8 w-8 place-items-center rounded-md border border-border-strong bg-surface font-mono text-sm font-semibold text-accent transition-colors group-hover:border-accent">
-            ow
-          </span>
-          <span className="font-mono text-sm text-muted transition-colors group-hover:text-text">
-            olavo<span className="text-accent">.</span>wilke
-          </span>
-        </a>
-
+      <nav className="mx-auto flex max-w-6xl items-center justify-end gap-2 px-6 py-4">
         <div className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <a

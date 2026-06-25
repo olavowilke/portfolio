@@ -93,14 +93,13 @@ function ProjectBlock({ project: p, flip }: { project: Project; flip: boolean })
   );
 }
 
-/* Renders the data-flow string as connected nodes — a stand-in until the
-   Excalidraw architecture diagram lands in the design phase. */
+/* Clean placeholder for the architecture diagram. The real dark/green
+   Excalidraw diagram will be embedded here. */
 function DiagramCard({ flow }: { flow: string }) {
-  const nodes = flow.split("→").map((n) => n.trim());
   return (
-    <div className="card relative h-full overflow-hidden p-6">
+    <div className="card relative flex h-full min-h-[260px] flex-col overflow-hidden p-6">
       <div className="mb-5 flex items-center justify-between">
-        <p className="eyebrow text-[0.65rem]">architecture · data flow</p>
+        <p className="eyebrow text-[0.65rem]">architecture diagram</p>
         <span className="flex gap-1.5">
           <Dot /> <Dot /> <Dot />
         </span>
@@ -116,28 +115,34 @@ function DiagramCard({ flow }: { flow: string }) {
         }}
       />
 
-      <ol className="relative space-y-2.5">
-        {nodes.map((node, i) => (
-          <li key={i} className="flex flex-col gap-2.5">
-            <div className="flex items-start gap-3">
-              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border border-border-strong bg-bg font-mono text-[0.7rem] text-accent">
-                {i + 1}
-              </span>
-              <span className="rounded-md border border-border bg-surface-2/80 px-3 py-1.5 font-mono text-[0.78rem] leading-snug text-text/85">
-                {node}
-              </span>
-            </div>
-            {i < nodes.length - 1 && (
-              <span className="ml-3 font-mono text-accent-deep">↓</span>
-            )}
-          </li>
-        ))}
-      </ol>
+      {/* accessible description for screen readers / context, hidden visually */}
+      <span className="sr-only">{flow}</span>
 
-      <p className="relative mt-5 border-t border-border pt-4 font-mono text-[0.65rem] text-faint">
-        Interactive Excalidraw diagram coming in the design phase.
-      </p>
+      <div className="relative flex flex-1 flex-col items-center justify-center gap-4 text-center">
+        <WireframeGlyph />
+        <p className="font-mono text-[0.7rem] text-faint">Architecture diagram coming soon</p>
+      </div>
     </div>
+  );
+}
+
+function WireframeGlyph() {
+  return (
+    <svg
+      viewBox="0 0 120 64"
+      className="h-16 w-32 text-accent-deep"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden
+    >
+      <rect x="4" y="24" width="26" height="16" rx="3" />
+      <rect x="47" y="8" width="26" height="16" rx="3" />
+      <rect x="47" y="40" width="26" height="16" rx="3" />
+      <rect x="90" y="24" width="26" height="16" rx="3" />
+      <path d="M30 32 H40 M60 24 V40 M73 16 H83 V30 M73 48 H83 V34" opacity="0.7" />
+      <circle cx="60" cy="32" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
   );
 }
 
