@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { profile } from "@/lib/content";
 
 const container = {
@@ -103,15 +104,16 @@ export function Hero() {
                   "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
               }}
             />
-            {/* photo placeholder — drop /public/olavo.jpg and swap the inner div for next/image */}
-            <div className="absolute inset-0 grid place-items-center overflow-hidden rounded-full border border-border-strong bg-gradient-to-b from-surface-2 to-bg accent-glow">
-              {/* PHOTO GOES HERE */}
-              <span className="font-display text-7xl font-bold text-accent/30 select-none">
-                OW
-              </span>
-              <span className="absolute bottom-6 font-mono text-[0.65rem] uppercase tracking-widest text-faint">
-                photo
-              </span>
+            {/* portrait */}
+            <div className="absolute inset-0 overflow-hidden rounded-full border border-border-strong bg-surface-2 accent-glow">
+              <Image
+                src="/olavo-4.png"
+                alt={profile.name}
+                fill
+                priority
+                sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 288px"
+                className="object-cover"
+              />
             </div>
             {/* corner ticks */}
             <Corner className="-left-1 -top-1 border-l border-t" />

@@ -15,7 +15,7 @@ export const profile = {
   linkedinLabel: "in/olavo-wilke",
   cv: "/olavo-wilke-cv.pdf",
   bio: [
-    "I'm a software engineer with 6+ years of hands-on experience building robust, safe, and high-performing backend systems.",
+    "I'm a software engineer with solid field experience building robust, safe, and high-performing backend systems.",
     "My work lives where throughput and latency matter most — bet pipelines processing millions of events, procurement engines sourcing across vendors in real time, and marketing systems reaching hundreds of thousands of users. I've shipped across finance, iGaming, and education.",
     "I design the solution, build it end to end, and keep it healthy in production.",
   ],
