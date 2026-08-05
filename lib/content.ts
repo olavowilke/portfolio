@@ -148,7 +148,7 @@ export const projects: Project[] = [
     stack: ["Go", "Adobe Journey Optimizer", "Kafka", "MySQL", "REST", "Slack"],
     diagram:
       "MDM → Kafka → klio (Go) → MySQL ← back-office REST. Polling: 1-min trigger + 5-min retry → Adobe Journey Optimizer → fans. Slack to ops.",
-    image: "/diagrams/game-winner-sender.png",
+    image: "/diagrams/game-winner-sender-v1.png",
   },
 ];
 
